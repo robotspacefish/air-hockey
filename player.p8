@@ -2,7 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 29
 __lua__
 
-speed = 1
+acceleration = 1
 
 function create_player(n, c, x, y)
   return create_object("player", x, y, {
@@ -31,12 +31,12 @@ function create_player(n, c, x, y)
 
       -- TODO add wall bump
 
-      if (btn(0, n)) self.dx -= speed -- left
+      if (btn(0, n)) self.dx -= acceleration -- left
 
-      if (btn(1, n) ) self.dx += speed -- right
+      if (btn(1, n) ) self.dx += acceleration -- right
 
-      if (btn(2, n)) self.dy -= speed -- up
-      if (btn(3, n)) self.dy += speed -- down
+      if (btn(2, n)) self.dy -= acceleration -- up
+      if (btn(3, n)) self.dy += acceleration -- down
 
       -- limit dx/dy
       local max = 3
