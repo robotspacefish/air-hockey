@@ -6,9 +6,8 @@ end
 
 function _draw()
   cls()
-  rectfill(8, 0, 95, 128, 12) -- score area
+  rectfill(16, 0, 111, 128, 12) -- table bg
   map(0, 0, 0,0,16,16)
-
 end
 
 function _update()
