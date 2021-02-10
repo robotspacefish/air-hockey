@@ -24,6 +24,9 @@ function create_object(typ, x, y, other_props)
   return obj
 end
 
+function tile_to_px(t)
+  return t * 8
+end
 
 function debug(str, x, y, c)
   print(str, x, y, c)
