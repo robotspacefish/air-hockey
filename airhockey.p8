@@ -5,8 +5,8 @@ __lua__
 #include player.p8
 
 function _init()
-  p1 = create_player(0, 8,tile_to_px(7), tile_to_px(2))
-  p2 = create_player(1, 11,tile_to_px(7), tile_to_px(12))
+  p1 = create_player(1, 8,tile_to_px(7), tile_to_px(2))
+  p2 = create_player(0, 11,tile_to_px(7), tile_to_px(12))
 
 end
 
