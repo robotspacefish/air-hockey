@@ -18,6 +18,9 @@ function create_player(n, c, x, y)
       local n = self.n
       local y1_boundary
 
+      self.dx *= friction
+      self.dy *= friction
+
       if self.n == 0 then
         y1_boundary = 56
         y2_boundary = tile_to_px(13)
@@ -28,12 +31,27 @@ function create_player(n, c, x, y)
 
       -- TODO add wall bump
 
-      if (btn(0, n) and self.x > tile_to_px(3)) self.x -= speed -- left
-      if (btn(1, n) and self.x < tile_to_px(11)) self.x += speed -- right
+      if (btn(0, n)) self.dx -= speed -- left
 
+      if (btn(1, n) ) self.dx += speed -- right
 
-      if (btn(2, n) and self.y > y1_boundary) self.y -= speed -- up
-      if (btn(3, n) and self.y < y2_boundary) self.y += speed -- down
+      if (btn(2, n)) self.dy -= speed -- up
+      if (btn(3, n)) self.dy += speed -- down
+
+      -- limit dx/dy
+      local max = 3
+      self.dx = mid(-max, self.dx, max)
+      self.dy = mid(-max, self.dy, max)
+
+      -- apply dx/dy
+      self.x += self.dx
+      self.y += self.dy
+
+      -- boundaries
+      if (self.x < left_boundary) self.x = left_boundary
+      if (self.x > right_boundary) self.x = right_boundary
+      if (self.y < y1_boundary) self.y = y1_boundary
+      if (self.y > y2_boundary) self.y = y2_boundary
     end
   })
 end
