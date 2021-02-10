@@ -5,13 +5,9 @@ __lua__
 speed = 1
 
 function create_player(n, c, x, y)
-  return {
-    number = n,
+  return create_object("player", x, y, {
+    n = n,
     c = c,
-    x = x,
-    y = y,
-    dx = 0,
-    dy = 0,
     score = 0,
     drw = function(self)
       pal(12, self.c)
@@ -19,11 +15,11 @@ function create_player(n, c, x, y)
       pal()
     end,
     upd = function(self)
-      local n = self.number
+      local n = self.n
       if (btn(0, n)) self.x -= speed -- left
       if (btn(1, n)) self.x += speed -- right
       if (btn(2, n)) self.y -= speed -- up
       if (btn(3, n)) self.y += speed -- down
     end
-  }
+  })
 end
