@@ -16,10 +16,11 @@ function create_player(n, c, x, y)
     end,
     upd = function(self)
       local n = self.n
-      if (btn(0, n)) self.x -= speed -- left
-      if (btn(1, n)) self.x += speed -- right
-      if (btn(2, n)) self.y -= speed -- up
-      if (btn(3, n)) self.y += speed -- down
+      -- TODO add wall bump
+      if (btn(0, n) and self.x > tile_to_px(3)) self.x -= speed -- left
+      if (btn(1, n) and self.x < tile_to_px(11)) self.x += speed -- right
+      if (btn(2, n) and self.y > tile_to_px(1)) self.y -= speed -- up
+      if (btn(3, n) and self.y < tile_to_px(13)) self.y += speed -- down
     end
   })
 end
