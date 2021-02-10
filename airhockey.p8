@@ -6,11 +6,16 @@ __lua__
 #include player.p8
 
 function _init()
+  friction = 0.90
+  left_boundary = tile_to_px(3)
+  right_boundary = tile_to_px(11)
+
   p1 = create_player(1, 8,tile_to_px(7), tile_to_px(2))
   p2 = create_player(0, 11,tile_to_px(7), tile_to_px(12))
   game_objects = {}
   add(game_objects, p1)
   add(game_objects, p2)
+
 end
 
 function _draw()
@@ -21,7 +26,6 @@ function _draw()
   for i = 1, #game_objects do
     game_objects[i]:drw()
   end
-
 end
 
 function _update()
