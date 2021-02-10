@@ -2,32 +2,32 @@ pico-8 cartridge // http://www.pico-8.com
 version 29
 __lua__
 
+#include utilities.p8
 #include player.p8
 
 function _init()
   p1 = create_player(1, 8,tile_to_px(7), tile_to_px(2))
   p2 = create_player(0, 11,tile_to_px(7), tile_to_px(12))
-
+  game_objects = {}
+  add(game_objects, p1)
+  add(game_objects, p2)
 end
 
 function _draw()
   cls()
   rectfill(16, 0, 111, 128, 12) -- table bg
   map(0, 0, 0,0,16,16)
-  p1:drw()
-  p2:drw()
-  debug(p1.number, 10, 10, 7)
-  debug(p2.number, 10, 18, 7)
+
+  for i = 1, #game_objects do
+    game_objects[i]:drw()
+  end
+
 end
 
 function _update()
-  p1:upd()
-  p2:upd()
-end
-
-
-function debug(str, x, y, c)
-  print(str, x, y, c)
+  for i = 1, #game_objects do
+    game_objects[i]:upd()
+  end
 end
 
 function tile_to_px(t)
