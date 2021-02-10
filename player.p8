@@ -20,15 +20,10 @@ function create_player(n, c, x, y)
     end,
     upd = function(self)
       local n = self.number
-      -- if self.number == 1 then
-        if (btn(0, n)) self.x -= speed -- left
-        if (btn(1, n)) self.x += speed -- right
-        if (btn(2, n)) self.y -= speed -- up
-        if (btn(3, n)) self.y += speed -- down
-      -- else
-        -- if (btn(s)) self.x -= speed -- left
-        -- if (btn(f)) self.x += speed -- right
-      -- end
+      if (btn(0, n)) self.x -= speed -- left
+      if (btn(1, n)) self.x += speed -- right
+      if (btn(2, n)) self.y -= speed -- up
+      if (btn(3, n)) self.y += speed -- down
     end
   }
 end
