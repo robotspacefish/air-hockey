@@ -46,7 +46,7 @@ function _draw()
 
   for i = 1, #game_objects do
 
-    game_objects[i]:drw()
+    game_objects[i]:draw()
   end
 
   -- == goals ======
@@ -57,9 +57,12 @@ function _draw()
   rectfill(52, 125, 76, 127, 6) -- bottom goal
 end
 
+
+
 function _update()
   for i = 1, #game_objects do
-    game_objects[i]:upd()
+    local o = game_objects[i]
+    o:update()
   end
 end
 

@@ -13,11 +13,11 @@ function create_object(typ, x, y, size, sprite, other_props)
     size = size,
     -- upd = function(self)
     -- end,
-    drw = function(self)
+    draw = function(self)
       spr(self.spr, self.x, self.y)
     end,
-    upd = function(self)
-      -- do nothing
+    update = function(self)
+      if (self.typ == "player") self.upd(self)
     end
     -- get_center = function(self)
     --   return self.x + self.size/2

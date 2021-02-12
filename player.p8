@@ -11,7 +11,7 @@ function create_player(n, c, x, y)
     c = c,
     bounce = 0,
     score = 0,
-    drw = function(self)
+    draw = function(self)
       pal(12, self.c)
       spr(self.spr, self.x, self.y, self.size, self.size)
       pal()
