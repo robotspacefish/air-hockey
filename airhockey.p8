@@ -8,11 +8,11 @@ __lua__
 
 function _init()
   friction = 0.90
-  left_boundary = tile_to_px(3)
-  right_boundary = tile_to_px(11)
-  p1 = create_player(1, 8,tile_to_px(8), tile_to_px(3))
-  p2 = create_player(0, 11,tile_to_px(8), tile_to_px(13))
-  puck = create_puck(tile_to_px(8), tile_to_px(8))
+  left_boundary = 25
+  right_boundary = 88
+  p1 = create_player(1, 8, 56, 16)
+  p2 = create_player(0, 11, 56, 96)
+  puck = create_puck(60, 60)
 
   game_objects = {}
   add(game_objects, p1)
