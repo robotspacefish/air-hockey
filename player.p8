@@ -24,11 +24,11 @@ function create_player(n, c, x, y)
       self.dy *= friction
 
       if self.n == 0 then -- player 2
-        y1_boundary = 56
+        y1_boundary = 65 -- middle of table + 1 for adjustment
         y2_boundary = 104
       else -- player 1
          y1_boundary = 8
-         y2_boundary = 56 -- middle of table minus half player width
+         y2_boundary = 49 -- middle of table minus player height + 1
       end
 
       if (btn(0, n)) self.dx -= acceleration -- left
