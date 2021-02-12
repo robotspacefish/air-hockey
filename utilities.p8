@@ -33,6 +33,18 @@ function create_object(typ, x, y, size, sprite, other_props)
   return obj
 end
 
+function is_circle_collision(x1, y1, r1, x2, y2, r2)
+  local x_dist = (x2+r2) - (x1 + r1)
+  local y_dist = (y2+r2) - (y1 + r1)
+  local dist = sqrt(x_dist * x_dist + y_dist * y_dist)
+
+  local radii_sum = r1 + r2
+
+  if (dist > radii_sum) return false
+
+  return true
+end
+
 function tile_to_px(t)
   return t * 8
 end
