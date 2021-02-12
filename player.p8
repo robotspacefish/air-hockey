@@ -6,14 +6,14 @@ acceleration = 1
 max_bounce = 2
 
 function create_player(n, c, x, y)
-  return create_object("player", x, y, {
+  return create_object("player", x, y, 2, 2, {
     n = n,
     c = c,
     bounce = 0,
     score = 0,
     drw = function(self)
       pal(12, self.c)
-      spr(2, self.x, self.y, 2, 2)
+      spr(self.spr, self.x, self.y, self.size, self.size)
       pal()
     end,
     upd = function(self)
@@ -25,9 +25,9 @@ function create_player(n, c, x, y)
 
       if self.n == 0 then -- player 2
         y1_boundary = 56
-        y2_boundary = tile_to_px(13)
+        y2_boundary = 104
       else -- player 1
-         y1_boundary = tile_to_px(1)
+         y1_boundary = 8
          y2_boundary = 56 -- middle of table minus half player width
       end
 
