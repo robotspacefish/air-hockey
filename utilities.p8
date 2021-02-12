@@ -9,6 +9,7 @@ function create_object(typ, x, y, size, sprite, other_props)
     y = y,
     dx = 0,
     dy = 0,
+    r = size*8/2,
     spr = sprite,
     size = size,
     -- upd = function(self)
