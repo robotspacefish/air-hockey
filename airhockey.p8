@@ -46,10 +46,9 @@ function _draw()
   cls()
   -- map(0,0,0,0,16,16)
   draw_table()
-
   for i = 1, #game_objects do
-
-    game_objects[i]:draw()
+    local o = game_objects[i]
+    o:draw()
   end
 
   -- == goals ======
