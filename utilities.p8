@@ -53,3 +53,25 @@ end
 function debug(str, x, y, c)
   print(str, x, y, c)
 end
+
+function toggle_debug_mode()
+  if (mode == "debug") then
+    mode = ""
+  else
+    mode = "debug"
+  end
+end
+
+function display_debug()
+  local p1_c = "false"
+  local p2_c = "false"
+  local puck_c = "false"
+
+  if (p1.has_collided) p1_c = "true"
+  if (p2.has_collided) p2_c = "true"
+  if (puck.has_collided) puck_c = "true"
+
+  debug(mode, 0, 0, 8)
+  debug("p1:"..p1_c, 0, 100, 7)
+  debug("p2:"..p2_c, 0, 108, 7)
+end
