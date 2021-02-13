@@ -15,6 +15,9 @@ function _init()
   puck = create_puck(60, 60)
 
   game_objects = {}
+  player_objects = {}
+  add(player_objects, p1)
+  add(player_objects, p2)
   add(game_objects, p1)
   add(game_objects, p2)
   add(game_objects, puck)
