@@ -33,6 +33,22 @@ function create_object(typ, x, y, size, sprite, other_props)
     top_right = function(self)
       return self.x
     end,
+    update = function(self, obj)
+      -- update player
+      -- if (self.typ ~= "puck") self.upd(self)
+      self.upd(self, obj)
+      -- for i = 1, #game_objects do
+      --   local o = game_objects[i]
+
+        -- don't check obj against itself
+        -- if  self.typ == "p1" and o.typ == "p1" or self.typ == "p2" and o.typ == "p2" or self.typ == "puck" and o.type == "puck"  then
+        -- else
+        -- end
+
+        -- if self.typ ~= o.typ then
+        --   check_for_collision(self, o)
+        -- end
+      -- end
     end
   }
 
