@@ -7,13 +7,14 @@ function create_object(typ, x, y, size, sprite, other_props)
     typ = typ,
     x = x,
     y = y,
-    dx = 0,
-    dy = 0,
+    vx = 0,
+    vy = 0,
     r = size * 8 / 2,
     spr = sprite,
     size = size,
     w = size * 8,
     h = size * 8,
+    has_collided = false,
     draw = function(self)
       spr(self.spr, self.x, self.y)
     end,
