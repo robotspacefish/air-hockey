@@ -14,7 +14,6 @@ function create_object(typ, x, y, size, sprite, other_props)
     size = size,
     w = size * 8,
     h = size * 8,
-    has_collided = false,
     draw = function(self)
       spr(self.spr, self.x, self.y)
     end,
@@ -75,14 +74,10 @@ end
 
 function check_for_collision(obj1, obj2)
   if is_circle_collision(obj1.x, obj1.y, obj1.r, obj2.x, obj2.y, obj2.r) then
-    obj1.has_collided = true
-    obj2.has_collided = true
     return true
-  else
-    obj1.has_collided = false
-    obj2.has_collided = false
-    return false
   end
+
+  return false
 end
 
 function collision_top_left(o1, o2)
