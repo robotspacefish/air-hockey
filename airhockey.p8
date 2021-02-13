@@ -21,7 +21,7 @@ function _init()
   add(game_objects, p1)
   add(game_objects, p2)
   add(game_objects, puck)
-
+  mode = "debug"
 end
 
 function draw_table()
@@ -58,15 +58,20 @@ function _draw()
 
   rectfill(52, 121, 76, 124, 1) -- bottom goal
   rectfill(52, 125, 76, 127, 6) -- bottom goal
+
+  -- debug
+  -- if (mode == "debug") display_debug()
+  display_debug()
 end
 
-
-
 function _update()
+  if (btnp(4)) toggle_debug_mode()
+
   for i = 1, #game_objects do
     local o = game_objects[i]
     o:update()
   end
+
 end
 
 __gfx__

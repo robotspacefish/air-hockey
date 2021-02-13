@@ -72,6 +72,19 @@ function display_debug()
   if (puck.has_collided) puck_c = "true"
 
   debug(mode, 0, 0, 8)
-  debug("p1:"..p1_c, 0, 100, 7)
-  debug("p2:"..p2_c, 0, 108, 7)
+
+  local c = 10
+  debug("p1", 0, 8, c)
+  debug("x:"..p1.x,0, 16, c)
+  debug("y:"..p1.y,0, 24, c)
+  debug("vx:"..p1.vx,0, 32, c)
+  debug("vy:"..p1.vy,0, 40, c)
+  debug(p1_c, 0, 48, c)
+  debug("----", 0, 48+8, 8)
+  debug("p2", 0, 56+8, c)
+  debug("x:"..p2.x,0, 64+8, c)
+  debug("y:"..p2.y,0, 72+8, c)
+  debug("vx:"..p2.vx,0, 80+8, c)
+  debug("vy:"..p2.vy,0, 88+8, c)
+  debug(p2_c, 0, 96+8, c)
 end
