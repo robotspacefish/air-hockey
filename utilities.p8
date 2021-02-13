@@ -46,6 +46,22 @@ function is_circle_collision(x1, y1, r1, x2, y2, r2)
   return true
 end
 
+function check_for_collision(obj1, obj2)
+  if is_circle_collision(obj1.x, obj1.y, obj1.r, obj2.x, obj2.y, obj2.r) then
+    obj1.has_collided = true
+    obj2.has_collided = true
+    return true
+  else
+    obj1.has_collided = false
+    obj2.has_collided = false
+    return false
+  end
+end
+
+function collision_top_left(o1, o2)
+  return o1.x
+end
+
 function tile_to_px(t)
   return t * 8
 end
