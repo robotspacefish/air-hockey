@@ -9,20 +9,30 @@ function create_object(typ, x, y, size, sprite, other_props)
     y = y,
     dx = 0,
     dy = 0,
-    r = size*8/2,
+    r = size * 8 / 2,
     spr = sprite,
     size = size,
-    -- upd = function(self)
-    -- end,
+    w = size * 8,
+    h = size * 8,
     draw = function(self)
       spr(self.spr, self.x, self.y)
     end,
-    update = function(self)
-      if (self.typ == "player") self.upd(self)
+    x2 = function(self)
+      return self.x + self.w
+    end,
+    y2 = function(self)
+      return self.y + self.h
+    end,
+    cx = function(self)
+      return self.x + self.r
+    end,
+    cy = function(self)
+      return self.y + self.r
+    end,
+    top_right = function(self)
+      return self.x
+    end,
     end
-    -- get_center = function(self)
-    --   return self.x + self.size/2
-    -- end
   }
 
   -- add other props
