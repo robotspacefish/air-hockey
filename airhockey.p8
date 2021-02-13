@@ -10,8 +10,8 @@ function _init()
   friction = 0.90
   left_boundary = 25
   right_boundary = 88
-  p1 = create_player(1, 8, 56, 16)
-  p2 = create_player(0, 11, 56, 96)
+  p1 = create_player("p1", 1, 8, 56, 16)
+  p2 = create_player("p2", 0, 11, 56, 96)
   puck = create_puck(60, 60)
 
   game_objects = {}
