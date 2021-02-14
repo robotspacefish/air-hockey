@@ -10,15 +10,18 @@ function _init()
   friction = 0.90
   left_boundary = 25
   right_boundary = 88
-  p1 = create_player(1, 8, 56, 16)
-  p2 = create_player(0, 11, 56, 96)
+  p1 = create_player("p1", 1, 8, 56, 16)
+  p2 = create_player("p2", 0, 11, 56, 96)
   puck = create_puck(60, 60)
 
   game_objects = {}
+  player_objects = {}
+  add(player_objects, p1)
+  add(player_objects, p2)
   add(game_objects, p1)
   add(game_objects, p2)
   add(game_objects, puck)
-
+  mode = "debug"
 end
 
 function draw_table()
@@ -43,10 +46,9 @@ function _draw()
   cls()
   -- map(0,0,0,0,16,16)
   draw_table()
-
   for i = 1, #game_objects do
-
-    game_objects[i]:drw()
+    local o = game_objects[i]
+    o:draw()
   end
 
   -- == goals ======
@@ -55,12 +57,20 @@ function _draw()
 
   rectfill(52, 121, 76, 124, 1) -- bottom goal
   rectfill(52, 125, 76, 127, 6) -- bottom goal
+
+  -- debug
+  -- if (mode == "debug") display_debug()
+  display_debug()
 end
 
 function _update()
+  if (btnp(4)) toggle_debug_mode()
+
   for i = 1, #game_objects do
-    game_objects[i]:upd()
+    local o = game_objects[i]
+    o:update()
   end
+
 end
 
 __gfx__

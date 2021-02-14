@@ -7,21 +7,48 @@ function create_object(typ, x, y, size, sprite, other_props)
     typ = typ,
     x = x,
     y = y,
-    dx = 0,
-    dy = 0,
+    vx = 0,
+    vy = 0,
+    r = size * 8 / 2,
     spr = sprite,
     size = size,
-    -- upd = function(self)
-    -- end,
-    drw = function(self)
+    w = size * 8,
+    h = size * 8,
+    draw = function(self)
       spr(self.spr, self.x, self.y)
     end,
-    upd = function(self)
-      -- do nothing
+    x2 = function(self)
+      return self.x + self.w
+    end,
+    y2 = function(self)
+      return self.y + self.h
+    end,
+    cx = function(self)
+      return self.x + self.r
+    end,
+    cy = function(self)
+      return self.y + self.r
+    end,
+    top_right = function(self)
+      return self.x
+    end,
+    update = function(self, obj)
+      -- update player
+      -- if (self.typ ~= "puck") self.upd(self)
+      self.upd(self, obj)
+      -- for i = 1, #game_objects do
+      --   local o = game_objects[i]
+
+        -- don't check obj against itself
+        -- if  self.typ == "p1" and o.typ == "p1" or self.typ == "p2" and o.typ == "p2" or self.typ == "puck" and o.type == "puck"  then
+        -- else
+        -- end
+
+        -- if self.typ ~= o.typ then
+        --   check_for_collision(self, o)
+        -- end
+      -- end
     end
-    -- get_center = function(self)
-    --   return self.x + self.size/2
-    -- end
   }
 
   -- add other props
@@ -45,10 +72,57 @@ function is_circle_collision(x1, y1, r1, x2, y2, r2)
   return true
 end
 
+function check_for_collision(obj1, obj2)
+  if is_circle_collision(obj1.x, obj1.y, obj1.r, obj2.x, obj2.y, obj2.r) then
+    return true
+  end
+
+  return false
+end
+
+function collision_top_left(o1, o2)
+  return o1.x
+end
+
 function tile_to_px(t)
   return t * 8
 end
 
 function debug(str, x, y, c)
   print(str, x, y, c)
+end
+
+function toggle_debug_mode()
+  if (mode == "debug") then
+    mode = ""
+  else
+    mode = "debug"
+  end
+end
+
+function display_debug()
+  local p1_c = "false"
+  local p2_c = "false"
+  local puck_c = "false"
+
+  if (p1.has_collided) p1_c = "true"
+  if (p2.has_collided) p2_c = "true"
+  if (puck.has_collided) puck_c = "true"
+
+  debug(mode, 0, 0, 8)
+
+  local c = 10
+  debug("p1", 0, 8, c)
+  debug("x:"..p1.x,0, 16, c)
+  debug("y:"..p1.y,0, 24, c)
+  debug("vx:"..p1.vx,0, 32, c)
+  debug("vy:"..p1.vy,0, 40, c)
+  debug(p1_c, 0, 48, c)
+  debug("----", 0, 48+8, 8)
+  debug("p2", 0, 56+8, c)
+  debug("x:"..p2.x,0, 64+8, c)
+  debug("y:"..p2.y,0, 72+8, c)
+  debug("vx:"..p2.vx,0, 80+8, c)
+  debug("vy:"..p2.vy,0, 88+8, c)
+  debug(p2_c, 0, 96+8, c)
 end
